@@ -1,6 +1,6 @@
 # Testes Automatizados para EducAPI com Robot Framework
 
-Este repositório contém um conjunto de testes automatizados para o **EducAPI**, um sistema colaborativo desenvolvido para apoiar atividades de alfabetização. Os testes foram desenvolvidos utilizando **Robot Framework** e **RequestsLibrary**, com o objetivo de garantir a qualidade dos serviços da API REST.
+Este repositório contém um conjunto de testes automatizados para o **EducAPI**, um sistema colaborativo desenvolvido para apoiar atividades de alfabetização. Os testes foram desenvolvidos utilizando **Robot Framework** e **RequestsLibrary**, com o objetivo de contribuir para a qualidade dos serviços da API REST.
 
 ## Objetivo do Projeto
 
