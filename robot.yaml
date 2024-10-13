@@ -1,0 +1,10 @@
+output: log/output.xml
+log: log/log.html
+report: log/report.html
+
+
+test: tests/
+
+
+variables:
+  - resources/variables.robot

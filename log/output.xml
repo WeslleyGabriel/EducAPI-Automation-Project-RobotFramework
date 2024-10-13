@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.1 (Python 3.12.0 on win32)" generated="2024-10-08T11:15:34.483610" rpa="false" schemaversion="5">
+<suite id="s1" name="User Resource" source="D:\RemoteTCC\src\tests\user_resource.robot">
+<test id="s1-t1" name="Test Criar Usuário" line="7">
+<kw name="Criar Usuário" owner="user_page">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-10-08T11:15:35.346583" level="INFO">&amp;{payload} = { email=WeslleyGabrielPaz@test.com | password=Has7#skPS&amp; | name=Apenas um Teste }</msg>
+<var>&amp;{payload}</var>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<arg>name=${name}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.345582" elapsed="0.003001"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-10-08T11:15:35.586583" level="INFO">POST Request : url=http://localhost:8080/v1/api/users 
+ path_url=/v1/api/users 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '92', 'Content-Type': 'application/json'} 
+ body=b'{"email": "WeslleyGabrielPaz@test.com", "password": "Has7#skPS&amp;", "name": "Apenas um Teste"}' 
+ </msg>
+<msg time="2024-10-08T11:15:35.586583" level="INFO">POST Response : url=http://localhost:8080/v1/api/users 
+ status=201, reason= 
+ headers={'Vary': 'Origin, Access-Control-Request-Method, Access-Control-Request-Headers', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Date': 'Tue, 08 Oct 2024 14:15:35 GMT', 'Keep-Alive': 'timeout=60', 'Connection': 'keep-alive'} 
+ body={"id":41,"name":"Apenas um Teste","email":"WeslleyGabrielPaz@test.com","password":"Has7#skPS&amp;"} 
+ </msg>
+<arg>${BASE_URL}${CREATE_USER_ENDPOINT}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.348583" elapsed="0.238000"/>
+</kw>
+<msg time="2024-10-08T11:15:35.586583" level="INFO">${result} = ('PASS', &lt;Response [201]&gt;)</msg>
+<var>${result}</var>
+<arg>POST</arg>
+<arg>${BASE_URL}${CREATE_USER_ENDPOINT}</arg>
+<arg>json=${payload}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.348583" elapsed="0.238000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Get Status Code From Response" owner="user_page">
+<return>
+<value>${response.status_code}</value>
+<status status="PASS" start="2024-10-08T11:15:35.588583" elapsed="0.000000"/>
+</return>
+<arg>${result[1]}</arg>
+<status status="PASS" start="2024-10-08T11:15:35.587589" elapsed="0.000994"/>
+</kw>
+<msg time="2024-10-08T11:15:35.588583" level="INFO">${status_code} = 201</msg>
+<var>${status_code}</var>
+<arg>'${result[0]}' == 'PASS'</arg>
+<arg>Get Status Code From Response</arg>
+<arg>${result[1]}</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>409</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.586583" elapsed="0.002000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-10-08T11:15:35.589583" level="INFO">Usuário criado com sucesso.</msg>
+<arg>Usuário criado com sucesso.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.589583" elapsed="0.000000"/>
+</kw>
+<arg>'${status_code}' == '201'</arg>
+<arg>Log</arg>
+<arg>Usuário criado com sucesso.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.588583" elapsed="0.001000"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${status_code}' == '409'</arg>
+<arg>Log</arg>
+<arg>Usuário já existe, nenhum problema.</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.589583" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>'${status_code}' == '201' or '${status_code}' == '409'</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-10-08T11:15:35.589583" elapsed="0.001000"/>
+</kw>
+<arg>WeslleyGabrielPaz@test.com</arg>
+<arg>Has7#skPS&amp;</arg>
+<arg>Apenas um Teste</arg>
+<status status="PASS" start="2024-10-08T11:15:35.344582" elapsed="0.246001"/>
+</kw>
+<doc>Testa a criação de um usuário</doc>
+<status status="PASS" start="2024-10-08T11:15:35.343592" elapsed="0.246991"/>
+</test>
+<status status="PASS" start="2024-10-08T11:15:34.486615" elapsed="1.104981"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="User Resource">User Resource</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-10-08T11:15:34.531613" level="WARN">Error in file 'D:\RemoteTCC\src\page\user_page.robot' on line 30: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
+</errors>
+</robot>
