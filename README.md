@@ -5,8 +5,8 @@ Este repositório contém um conjunto de testes automatizados para o **EducAPI**
 ## Objetivo do Projeto
 
 - **Automatizar operações CRUD**: Testar criação, leitura, atualização e exclusão de usuários, contextos e desafios.
-- **Testar autenticação JWT**: Garantir que apenas usuários autenticados possam acessar funcionalidades protegidas.
-- **Facilitar adaptação para outros sistemas**: Estrutura facilmente adaptável para testar outras APIs REST.
+- **Testar autenticação JWT**: Verificar se apenas usuários autenticados podem acessar funcionalidades protegidas.
+- **Facilitar adaptação para outros sistemas**: Estrutura dos testes podem ser adaptadas para testar outras APIs REST.
 
 ## Pré-requisitos
 
@@ -19,7 +19,7 @@ Este repositório contém um conjunto de testes automatizados para o **EducAPI**
 
 - **Clone o Repositório**
     ```sh
-    git clone https://github.com/WeslleyGabriel/remoteEducAPI.git
+    git clone https://github.com/WeslleyGabriel/EducAPI-Automation-Project-RobotFramework.git
     cd remoteEducAPI
 
 ## Configure as Variáveis
